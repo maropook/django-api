@@ -18,8 +18,15 @@ from django.urls import path
 from django.urls.conf import include
 from django.conf.urls import url
 from blog.urls import router as blog_router
+from upload.urls import router as upload_router
+from api.urls import router as api_router
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('api/', include(blog_router.urls)),
+    url('api2/', include(upload_router.urls)),
+    url('api3/', include(api_router.urls)),
+    url('', RedirectView.as_view(url='/static/index.html')),
+
 ]
