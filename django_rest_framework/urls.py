@@ -21,17 +21,19 @@ from blog.urls import router as blog_router
 from api.urls import router as api_router
 from diary.urls import router as diary_router
 from article.urls import router as article_router
+from book.urls import router as book_router
 from django.views.generic import RedirectView
-
+from user.views import Login
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('api/', include(article_router.urls)),  # article 日記アプリ
     url('todo/', include(api_router.urls)),  # todoアプリ
+    url('book/', include(book_router.urls)),  # rakuten
 
 
     url('blog/', include(blog_router.urls)),
     url('diary/', include(diary_router.urls)),
 
     url('todolist/', RedirectView.as_view(url='/static/index.html')),
-
+    path('login/', Login.as_view()),
 ]
