@@ -35,6 +35,7 @@ urlpatterns = [
     url('diary/', include(diary_router.urls)),
 
     url('todolist/', RedirectView.as_view(url='/static/index.html')),
+    url('show/', RedirectView.as_view(url='/static/show.html')),
 
     url('rakuten/', RedirectView.as_view(url='/static/rakuten.html')),
     path('login/', Login.as_view()),
